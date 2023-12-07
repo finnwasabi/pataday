@@ -37,13 +37,22 @@ function Countdown({
           { date: getDate(seconds), label: "seconds", labelShort: "s" },
         ];
 
+        let hasNonZeroValue = false;
+
+        const newData = [...data].filter((item) => {
+          if (+item.date !== 0) hasNonZeroValue = true;
+          if (hasNonZeroValue) return true;
+          return false;
+        })
+
+
         return (
           <CountdownRender
             breakPoint={breakPoint}
             className={className}
             classNameTimer={classNameTimer}
             classNameLabel={classNameLabel}
-            data={data}
+            data={newData}
           />
         );
       }}
