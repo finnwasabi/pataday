@@ -35,14 +35,13 @@ export default function Home() {
         <Countdown
           date={
             new Date(
-              new Date().getTime() +
-                1000 * 60 * 60 * 24 * 0.5 +
-                1000 * 60 * 60 * 24 * 0.5
+              new Date().getTime() + 1000 * 60 * 60 * 24 * 0.5 - 55 * 1000
             )
           }
           className="flex xxs:gap-1"
           classNameTimer="text-primary-6"
           breakPoint={375}
+          isHiddenWhenZero={true}
         />
       </div>
 
