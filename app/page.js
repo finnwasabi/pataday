@@ -42,6 +42,7 @@ export default function Home() {
           classNameTimer="text-primary-6"
           breakPoint={375}
           isHiddenWhenZero={true}
+          hidden={["m"]}
         />
       </div>
 

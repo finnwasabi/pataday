@@ -19,23 +19,24 @@ function Countdown({
   classNameTimer,
   classNameLabel,
   breakPoint: breakPointProp,
+  hidden = [],
 }) {
   const d = date || new Date().getTime() + 1 * 24 * 60 * 60 * 1000;
   const breakPoint = useMediaQuery(`(max-width: ${breakPointProp}px)`);
 
   return (
     <CountdownComponent
-      date={d} // Next: 30 days}
+      date={d}
       renderer={({ minutes, seconds, days, hours }) => {
         const getDate = (renderTime) =>
           isShowingZeroPad ? zeroPad(renderTime) : renderTime;
 
-        let data = [
-          { date: getDate(days), label: "days", labelShort: "d" },
-          { date: getDate(hours), label: "hours", labelShort: "h" },
-          { date: getDate(minutes), label: "minutes", labelShort: "m" },
-          { date: getDate(seconds), label: "seconds", labelShort: "s" },
-        ];
+          let data = [
+            { date: getDate(days), label: "days", labelShort: "d", hidden: hidden.includes('d') },
+            { date: getDate(hours), label: "hours", labelShort: "h", hidden: hidden.includes('h') },
+            { date: getDate(minutes), label: "minutes", labelShort: "m", hidden: hidden.includes('m') },
+            { date: getDate(seconds), label: "seconds", labelShort: "s", hidden: hidden.includes('s') },
+          ];
 
         let hasNonZeroValue = false;
 
@@ -67,6 +68,7 @@ Countdown.propTypes = {
   classNameTimer: PropTypes.string,
   classNameLabel: PropTypes.string,
   breakPoint: PropTypes.number,
+  hidden: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default React.memo(Countdown);
