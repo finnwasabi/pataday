@@ -12,6 +12,19 @@ import { useMediaQuery } from "usehooks-ts";
 
 import CountdownRender from "./CountdownRender";
 
+/**
+ * Generates a countdown component that displays the remaining time in days, hours, minutes, and seconds.
+ *
+ * @param {Object} props - The properties for the countdown component.
+ * @param {boolean} props.isShowingZeroPad - Determines whether to show zero-padding for the time values.
+ * @param {Date} props.date - The target date for the countdown. If not provided, the countdown will start from the current date plus one day.
+ * @param {string} props.className - The CSS class name for the countdown component.
+ * @param {string} props.classNameTimer - The CSS class name for the timer section of the countdown component.
+ * @param {string} props.classNameLabel - The CSS class name for the label section of the countdown component.
+ * @param {number} props.breakPoint - The breakpoint value for the media query. Determines the maximum width at which the countdown component should switch to a smaller layout.
+ * @param {string[]} props.hidden - An array of strings representing the time units (days, hours, minutes, seconds) that should be hidden in the countdown component. ['d', 'h', 'm', 's']. Default is [].
+ * @return {JSX.Element} The countdown component.
+ */
 function Countdown({
   isShowingZeroPad = true,
   date,

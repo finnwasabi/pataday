@@ -23,9 +23,7 @@ function CountdownRender({
     }
 
     if (item.hidden) {
-      return (
-        <p key={item.label} className={className} style={{ display: "none" }} />
-      );
+      return null;
     }
 
     if (hasNonZeroValue) {
